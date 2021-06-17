@@ -18,7 +18,7 @@ class ZcashAdapter {
 
     private let uniqueId: String
     private let keys: [String]
-    private let loggingProxy = ZcashLogger(logLevel: .error)
+    private let loggingProxy = ZcashLogger(logLevel: .debug)
 
     private let lastBlockUpdatedSubject = PublishSubject<Void>()
     private let stateUpdatedSubject = PublishSubject<Void>()
@@ -62,21 +62,29 @@ class ZcashAdapter {
                 birthday = ZcashSDK.SAPLING_ACTIVATION_HEIGHT
             }
         }
-
+        
+        let seedData = [UInt8](seed)
+        let unifiedViewingKeys = try DerivationTool.default.deriveUnifiedViewingKeysFromSeed(seedData, numberOfAccounts: 1)
+        
         let initializer = Initializer(cacheDbURL:try! ZcashAdapter.cacheDbURL(uniqueId: uniqueId),
                 dataDbURL: try! ZcashAdapter.dataDbURL(uniqueId: uniqueId),
                 pendingDbURL: try! ZcashAdapter.pendingDbURL(uniqueId: uniqueId),
                 endpoint: LightWalletEndpoint(address: endPoint, port: 9067),
                 spendParamsURL: try! ZcashAdapter.spendParamsURL(uniqueId: uniqueId),
                 outputParamsURL: try! ZcashAdapter.outputParamsURL(uniqueId: uniqueId),
+                viewingKeys: unifiedViewingKeys,
+                walletBirthday: birthday,
                 loggerProxy: loggingProxy)
 
-        let seedData = [UInt8](seed)
-        try initializer.initialize(viewingKeys: try DerivationTool.default.deriveViewingKeys(seed: seedData, numberOfAccounts: 1),
-                walletBirthday: BlockHeight(birthday))
 
-        keys = try DerivationTool.default.deriveSpendingKeys(seed: seedData, numberOfAccounts: 1)
+        
+        try initializer.initialize()
+        keys = try DerivationTool.default.deriveSpendingKeys(seed: seedData,
+                                                             numberOfAccounts: 1)
+        
         synchronizer = try SDKSynchronizer(initializer: initializer)
+        
+        try synchronizer.prepare()
 
         transactionPool = ZcashTransactionPool()
         transactionPool.store(confirmedTransactions: synchronizer.clearedTransactions, pendingTransactions: synchronizer.pendingTransactions)
@@ -131,12 +139,28 @@ class ZcashAdapter {
 
     @objc private func statusUpdated(_ notification: Notification) {
         var newState = balanceState
-
+        var blockDate: Date? = nil
+        if let blockTime = notification.userInfo?[SDKSynchronizer.NotificationKeys.blockDate] as? Date {
+            blockDate = blockTime
+        }
         switch synchronizer.status {
         case .disconnected: newState = .notSynced(error: AppError.noConnection)
         case .stopped: newState = .notSynced(error: AppError.unknownError)
         case .synced: newState = .synced
-        case .syncing: newState = .syncing(progress: Int(synchronizer.progress * 100), lastBlockDate: nil)
+        case .downloading(let p):
+            newState = .syncing(progress: Int(p.progress * 100), lastBlockDate: blockDate)
+        case .enhancing(let p):
+            newState = .syncing(progress: p.progress, lastBlockDate: blockDate)
+        case .unprepared:
+            newState = .notSynced(error: AppError.unknownError)
+        case .validating:
+            newState = .syncing(progress: 0, lastBlockDate: blockDate)
+        case .scanning(let scanProgress):
+            newState = .syncing(progress: Int(scanProgress.progress * 100), lastBlockDate: blockDate)
+        case .fetching:
+            newState = .syncing(progress: 0, lastBlockDate: nil)
+        case .error:
+            newState = .notSynced(error: AppError.unknownError)
         }
 
         if newState != balanceState {
@@ -156,12 +180,12 @@ class ZcashAdapter {
     }
 
     @objc private func blockHeightUpdated(_ notification: Notification) {
-        if let userInfo = notification.userInfo, let blockHeight = userInfo[CompactBlockProcessorNotificationKey.progressHeight] as? BlockHeight {
-            lastBlockHeight = blockHeight
-            lastBlockUpdatedSubject.onNext(())
-        }
-
-        balanceUpdatedSubject.onNext(())
+//        if let userInfo = notification.userInfo, let blockHeight = userInfo[CompactBlockProcessorNotificationKey.progressHeight] as? BlockHeight {
+//            lastBlockHeight = blockHeight
+//            lastBlockUpdatedSubject.onNext(())
+//        }
+//
+//        balanceUpdatedSubject.onNext(())
     }
 
     private func syncPending() {
@@ -248,6 +272,13 @@ class ZcashAdapter {
 
             try synchronizer.rewind(.transaction(firstUnmined))
             localStorage.zcashAlwaysPendingRewind = true
+        } catch SynchronizerError.rewindErrorUnknownArchorHeight {
+            do {
+                try synchronizer.rewind(.quick)
+                localStorage.zcashAlwaysPendingRewind = true
+            } catch {
+                loggingProxy.error("attempt to fix pending transactions failed with error: \(error)", file: #file, function: #function, line: 0)
+            }
         } catch {
             loggingProxy.error("attempt to fix pending transactions failed with error: \(error)", file: #file, function: #function, line: 0)
         }
@@ -255,7 +286,7 @@ class ZcashAdapter {
 
     deinit {
         NotificationCenter.default.removeObserver(self)
-        synchronizer.blockProcessor?.stop()
+        synchronizer.blockProcessor.stop()
         synchronizer.stop()
     }
 
@@ -264,7 +295,7 @@ class ZcashAdapter {
 extension ZcashAdapter {
 
     public static var newBirthdayHeight: Int {
-        WalletBirthday.birthday(with: Int.max).height
+        WalletBirthday.birthday(with: BlockHeight.max).height
     }
 
     private static func dataDirectoryUrl() throws -> URL {
@@ -326,14 +357,14 @@ extension ZcashAdapter: IAdapter {
 
     func refresh() {
         if saplingDataExist() {
-            sync()
+            sync(retry: true)
         }
     }
 
-    private func sync() {
+    private func sync(retry: Bool = false) {
         do {
             fixPendingTransactionsIfNeeded()
-            try synchronizer.start()
+            try synchronizer.start(retry: retry)
         } catch {
             balanceState = .notSynced(error: error)
             stateUpdatedSubject.onNext(())
@@ -341,11 +372,19 @@ extension ZcashAdapter: IAdapter {
     }
 
     var debugInfo: String {
-        """
-        ZcashAdapter address: \(synchronizer.getAddress(accountIndex: 0))
+        let taddress = synchronizer.getTransparentAddress(accountIndex: 0)
+        let tBalance = try? synchronizer.getTransparentBalance(address: taddress ?? "")
+        return """
+        ZcashAdapter
+        z-address: \(String(describing: synchronizer.getShieldedAddress(accountIndex: 0)))
+        t-address: \(String(describing: taddress ))
         spendingKeys: \(keys.description)
-        balance: \(synchronizer.initializer.getBalance())
-        verified balance: \(synchronizer.initializer.getVerifiedBalance())
+        shielded balance
+                  total:  \(synchronizer.initializer.getBalance())
+               verified:  \(synchronizer.initializer.getVerifiedBalance())
+        transparent balance
+                     total: \(tBalance == nil ? "failed" : String(describing: tBalance?.total))
+                  verified: \(tBalance == nil ? "failed" : String(describing: tBalance?.verified))
         """
     }
 
@@ -409,7 +448,7 @@ extension ZcashAdapter: IDepositAdapter {
 
     var receiveAddress: String {
         // only first account
-        synchronizer.getAddress(accountIndex: 0)
+        synchronizer.getShieldedAddress(accountIndex: 0) ?? "" //FIXME: address nullabilty issue
     }
 
 }
@@ -421,16 +460,24 @@ extension ZcashAdapter: ISendZcashAdapter {
     }
 
     func validate(address: String) throws {
-        guard !synchronizer.initializer.isValidTransparentAddress(address) else {
-            throw AppError.zcash(reason: .transparentAddress)
-        }
-
-        guard synchronizer.initializer.isValidShieldedAddress(address) else {
+        
+        guard address != receiveAddress else {
             throw AppError.addressInvalid
         }
+        
+        do {
+            let derivationTool = DerivationTool.default
+            
+            let validZAddress = try derivationTool.isValidShieldedAddress(address)
+            let validTAddress = try derivationTool.isValidTransparentAddress(address)
+            
+            guard validZAddress || validTAddress else {
+                throw AppError.addressInvalid
+            }
 
-        guard address != receiveAddress else {
-            throw AppError.zcash(reason: .sendToSelf)
+        } catch {
+            //FIXME: Should this be handled another way? logged? how?
+            throw AppError.addressInvalid
         }
     }
 
@@ -498,4 +545,14 @@ private class ZcashLogger: ZcashLightClientKit.Logger {
         logger.log(level: level, message: message, file: file, function: function, line: line)
     }
 
+}
+
+
+extension EnhancementProgress {
+    var progress: Int {
+        guard self.totalTransactions <= 0 else {
+            return 0
+        }
+        return Int(Double(self.enhancedTransactions)/Double(self.totalTransactions)) * 100
+    }
 }
