@@ -23,6 +23,7 @@
 "alert.wrong_amount" = "잘못된 금액";
 "alert.no_fee" = "잘못된 요금";
 "alert.unknown_error" = "알수없는 오류";
+"alert.success_action" = "Done";
 
 "action.loading" = "로딩중";
 "placeholder.search" = "검색";
@@ -136,6 +137,12 @@
 "balance_error.sync_error" = "동기화 오류";
 "lost_accounts.warning_title" = "iOS 키체인 오류";
 "lost_accounts.warning_message" = "iOS 잠금 화면이 변경되어 지갑이 보관된 암호화된 데이터가 최근에 무효화되었습니다";
+
+//Release notes
+
+"release_notes.title" = "What's New";
+"release_notes.follow_us" = "Follow Us";
+
 // Deposit
 
 "deposit.receive_coin" = "수신%@";
@@ -212,10 +219,11 @@
 "swap.you_pay" = "지불하기";
 "swap.estimated" = "예상";
 "swap.balance" = "잔액";
+"swap.powered_by" = "Powered By";
 "swap.allowance" = "허용량";
 "swap.you_get" = "얻기";
 "swap.token" = "선택";
-"swap.advanced_settings" = "고급 설정";
+"swap.advanced_settings" = "Swap Settings";
 "swap.proceed_button" = "다음";
 "swap.approve.title" = "스왑 승인";
 "swap.approve.description" = "스마트 계약에 사용자 대신 지정된 토큰을 교환할 수 있는 권한을 부여해야 합니다. 이 권한은 스마트 계약에서 사용할 수 있는 금액을 설정합니다. 잔액에는 영향을 미치지 않지만 승인 거래를 실행하려면 소액의 수수료가 필요합니다.\n\n매 거래 전에 요청 시 이루어질 수 있지만, 향후 거래를 위해 사전에 더 많은 금액을 승인하는 것이 더 저렴합니다.";
@@ -244,6 +252,9 @@
 "swap.advanced_settings.error.invalid_address" = "잘못된 주소";
 "swap.advanced_settings.error.invalid_slippage" = "올바르지 않은 슬립";
 "swap.advanced_settings.error.invalid_deadline" = "올바르지 않은 마감 시간";
+
+"swap.service" = "Service";
+"swap.service.title" = "Service";
 
 // Swap Approving
 
@@ -342,6 +353,10 @@
 "market_discovery.filter_title.computing" = "Computing";
 "market_discovery.filter_title.fan_tokens" = "Fan Tokens";
 "market_discovery.filter_title.investment_tools" = "Investment Tools";
+"market_discovery.filter_title.storage" = "Storage";
+"market_discovery.filter_title.identity" = "Identity";
+"market_discovery.filter_title.yield_tokens" = "Yield Tokens";
+
 
 "market_discovery.filter_description.blockchain" = "Native cryptocurrencies on major blockchains.";
 "market_discovery.filter_description.dexes" = "Decentralized cryptocurrency exchanges.";
@@ -361,7 +376,7 @@
 "market_discovery.filter_description.wallets" = "Tokens issued by cryptocurrency wallets.";
 "market_discovery.filter_description.synthetics" = "Platforms for creating decentralized synthetic assets.";
 "market_discovery.filter_description.index_funds" = "Assets that pegged in price to a set of tokens.";
-"market_discovery.filter_description.nft" = "Marketplaces for NFT tokens.";
+"market_discovery.filter_description.nft" = "NFT projects.";
 "market_discovery.filter_description.fundraising" = "Fundraising and token sale platforms.";
 "market_discovery.filter_description.gaming" = "Crypto projects in gaming and VR sector.";
 "market_discovery.filter_description.b2b" = "B2B service providers.";
@@ -371,6 +386,10 @@
 "market_discovery.filter_description.computing" = "Decentralized on-demand computing solutions.";
 "market_discovery.filter_description.fan_tokens" = "Digital fan tokens, typically specific to a team or club.";
 "market_discovery.filter_description.investment_tools" = "Token-powered analytics and investment instruments.";
+"market_discovery.filter_description.storage" = "Decentralized data-storage.";
+"market_discovery.filter_description.identity" = "Decentralized identity.";
+"market_discovery.filter_description.yield_tokens" = "Interesting Bearing Tokens.";
+
 
 "market_watchlist.empty.caption" = "You don’t have any favorite assets.\n You can add the favorites by clicking on star icon in the asset page";
 
@@ -444,16 +463,24 @@
 "coin_page.circulating_supply" = "In Circulation";
 "coin_page.total_supply" = "Total Supply";
 "coin_page.dilluted_market_cap" = "Diluted MCap";
-"coin_page.genesis_date" = "Launch Date";
+"coin_page.genesis_date" = "Inception Date";
 
 "coin_page.trading_volume" = "Trading Volume";
-"coin_page.markets" = "%@ Markets";
+"coin_page.trading_volume.description" = "The historical change in daily aggregate trading volume for %@";
+"coin_page.markets" = "Markets";
 "coin_page.funds_invested" = "Funds Invested";
+
+"coin_page.coin_markets" = "%@ Markets";
+"coin_page.coin_markets.sort_by" = "Sort By";
+"coin_page.coin_markets.sort_by.highest_volume" = "Highest Volume";
+"coin_page.coin_markets.sort_by.lowest_volume" = "Lowest Volume";
 
 "coin_page.tvl" = "Total Value Locked";
 "coin_page.market_cap_tvl_ratio" = "MCap / TVL Ratio";
 "coin_page.tvl_rank" = "TVL Rank";
 "coin_page.tvl.description" = "Capital deposited into the platform in the form of loan collateral or liquidity pool.";
+
+"coin_page.investor_data" = "Investor Data";
 
 "coin_page.category" = "Category";
 "coin_page.contract" = "%@ Contract";
@@ -463,6 +490,51 @@
 "coin_page.website" = "Website";
 "coin_page.whitepaper" = "Whitepaper";
 
+"coin_page.favorited" = "Added To Watchlist";
+"coin_page.unfavorited" = "Removed from Watchlist";
+
+"coin_page.major_holders" = "Major Holders";
+"coin_page.major_holders.chart.description" = "in top 10 wallets";
+"coin_page.major_holders.top_wallets" = "Top Wallets";
+"coin_page.major_holders.description" = "Chart above shows the % of all tokens in circulation held by top 10 wallets. The lower the % the more distributed the coin is.";
+"coin_page.major_holders.sync_error" = "Sync Error";
+
+"coin_page.tvl_rank.multi_chain" = "Multi-Chain";
+"coin_page.tvl_rank.sync_error" = "Sync Error";
+"coin_page.tvl_rank.filters" = "Filters";
+"coin_page.tvl_rank.filters.all" = "All";
+"coin_page.tvl_rank.sort_by" = "Sort By";
+"coin_page.tvl_rank.sort_by.highest_tvl" = "Highest TVL";
+"coin_page.tvl_rank.sort_by.lowest_tvl" = "Lowest TVL";
+
+"coin_page.security_parameters" = "Security Parameters";
+"coin_page.security_parameters.privacy" = "Privacy";
+"coin_page.security_parameters.issuance" = "Issuance";
+"coin_page.security_parameters.confiscation_resistance" = "Confiscation-resistance";
+"coin_page.security_parameters.censorship_resistance" = "Censorship-resistance";
+
+"coin_page.security_parameters.level.low" = "Low";
+"coin_page.security_parameters.level.medium" = "Medium";
+"coin_page.security_parameters.level.high" = "High";
+"coin_page.security_parameters.issuance.decentralized" = "Decentralized";
+"coin_page.security_parameters.issuance.centralized" = "Centralized";
+"coin_page.security_parameters.resistance.yes" = "Yes";
+"coin_page.security_parameters.resistance.no" = "No";
+
+"coin_page.security_parameters.privacy.description.low" = "Transactions with this token are fully public allowing 3rd party services to link different transactions to the same entity, see amounts transacted and view user balances.";
+"coin_page.security_parameters.privacy.description.medium" = "Transactions with this token are semi-anonymous. A 3rd party service is able to see the amounts transacted and partially link different transactions to the same entity.";
+"coin_page.security_parameters.privacy.description.high" = "Transactions with this token are anonymous by default or provide such capabilities. No entity is able to link different transactions to the same individual or see the amounts transacted.";
+"coin_page.security_parameters.issuance.description.decentralized" = "The amount of tokens in circulation controlled by an algorithm and works in a deterministic manner outside of centralized influence.";
+"coin_page.security_parameters.issuance.description.centralized" = "The amount of tokens in circulation can potentially be increased or decreased by a centralized entity at will.";
+"coin_page.security_parameters.confiscation_resistance.description.yes" = "The tokens can not be confiscated when kept in non-custodial wallet.";
+"coin_page.security_parameters.confiscation_resistance.description.no" = "The tokens can be confiscated or tampered with by an issuing entity.";
+"coin_page.security_parameters.censorship_resistance.description.yes" = "The token holder can not be censored from transacting.";
+"coin_page.security_parameters.censorship_resistance.description.no" = "The token holder can be censored from transacting.";
+
+"coin_page.info" = "Info";
+
+"coin_page.audits" = "Audits";
+
 // Transactions
 
 "transactions.title" = "거래기록";
@@ -470,13 +542,34 @@
 "transactions.filter_all" = "모든";
 "transactions.empty_text" = "당신은 아직 보류 중 또는 과거에 완료된 거래가 없습니다";
 "transactions.pending" = "보류 중";
-"transactions.receiving" = "수신 중";
 "transactions.failed" = "실패";
+
+"transactions.receive" = "Receive";
+"transactions.send" = "Send";
+"transactions.approve" = "Approve";
+"transactions.swap" = "Swap";
+
+"transactions.receiving" = "수신 중";
 "transactions.sending" = "전송중";
+"transactions.approving" = "Approving";
+"transactions.swapping" = "Swapping";
+"transactions.contract_call" = "Contract Call";
+"transactions.contract_creation" = "Contract Creation";
+
+"transactions.received" = "Received";
+"transactions.sent" = "Sent";
+"transactions.approved" = "Approved";
+"transactions.swapped" = "Swapped";
+
+"transactions.to" = "To %@";
+"transactions.from" = "From %@";
+
+"transactions.value.unlimited" = "unlimited";
 
 // Transaction Info
 
-"tx_info.title" = "거래기록";
+"tx_info.title" = "Transaction Info";
+"tx_info.date" = "Date";
 "tx_info.title_approval" = "스왑 승인";
 "tx_info.status.pending" = "보류 중";
 "tx_info.status.completed" = "완료";
@@ -494,6 +587,10 @@
 "tx_info.recipient_hash" = "수령인";
 "tx_info.raw_transaction" = "로우 트랜잭션";
 "tx_info.memo" = "Memo";
+"tx_info.view_on" = "View on %@";
+"tx_info.you_pay" = "You Pay";
+"tx_info.you_get" = "You Get";
+"tx_info.price" = "Price";
 
 // Settings
 
@@ -723,6 +820,7 @@ Unstoppable 지갑은 완전한 오픈소스여서 누구나 앱이 요구하는
 "create_wallet.error.empty_passphrase" = "암호 문구는 필수 입력 사항입니다";
 "create_wallet.error.forbidden_symbols" = "암호에는 라틴 문자 및 숫자만 사용하십시오";
 "create_wallet.error.invalid_confirmation" = "암호 확인이 일치하지 않습니다";
+"create_wallet.success" = "Created";
 
 // Select Coins
 
@@ -773,6 +871,7 @@ Unstoppable 지갑은 완전한 오픈소스여서 누구나 앱이 요구하는
 "add_token.invalid_contract_address_or_bep2_symbol" = "Invalid contract address or BEP2 symbol";
 "add_token.contract_not_found" = "Contract not found";
 "add_token.symbol_not_found" = "Symbol not found";
+"add_token.success_add" = "Added";
 
 "change_24hour_up" = "%@ 가격: 상승 %@%% %@";
 "change_24hour_down" = "%@ 가격: 하락 %@%% %@";
@@ -792,6 +891,7 @@ Unstoppable 지갑은 완전한 오픈소스여서 누구나 앱이 요구하는
 "wallet_connect.url" = "URL 주소";
 "wallet_connect.connect_description" = "승인을 눌러 이 앱이 귀하의 공공 주소를 볼 수 있도록 허용하십시오. 이것은 잠재적인 피싱 위험으로부터 데이터를 보호하기 위한 중요한 보안 단계 입니다.";
 "wallet_connect.usage_description" = "브라우저로 이동하십시오. 브라우저에서 상호 작용하는 동안에는 이 페이지를 닫지 마십시오.";
+"wallet_connect.no_connection" = "Wallet connect is not responding";
 "wallet_connect.button_disconnect" = "연결 해제";
 "ethereum_transaction.error.insufficient_balance" = "거래에서 전송하려면 %@가 필요합니다.";
 "ethereum_transaction.error.insufficient_balance_with_fee" = "현재 ETH 잔액은 거래 수수료를 포함하여이 거래를 처리하는 데 필요한 금액보다 적습니다.";

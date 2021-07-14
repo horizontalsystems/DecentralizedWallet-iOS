@@ -16,13 +16,15 @@
 "button.reject" = "Reddet";
 "button.connect" = "Bağlan";
 "button.save" = "Kaydet";
-"button.sign" = "Sign";
+"button.sign" = "kaydol";
 
 "alert.copied" = "Kopyalandı";
 "alert.no_internet" = "Internet Bağlantısı Yok";
 "alert.wrong_amount" = "Yanlış Tutar";
 "alert.no_fee" = "Yanlış Masraf";
 "alert.unknown_error" = "Bilinmeyen Hata";
+"alert.success_action" = "tamamlandı
+";
 
 "action.loading" = "yükleniyor...";
 "placeholder.search" = "Ara";
@@ -136,6 +138,12 @@
 "balance_error.sync_error" = "Senk. hatası";
 "lost_accounts.warning_title" = "iOS Keychain Hatası";
 "lost_accounts.warning_message" = "iOS cihazınızın kilidi değiştirildiğinden cüzdan bilginizi tutan şifreli dosya artık geçersiz";
+
+//Release notes
+
+"release_notes.title" = "What's New";
+"release_notes.follow_us" = "Follow Us";
+
 // Deposit
 
 "deposit.receive_coin" = "%@ al";
@@ -212,10 +220,11 @@
 "swap.you_pay" = "Ödediğiniz";
 "swap.estimated" = "tahmini";
 "swap.balance" = "Bakiye";
+"swap.powered_by" = "Powered By";
 "swap.allowance" = "Ödenek";
 "swap.you_get" = "Kazandığınız";
 "swap.token" = "Seç";
-"swap.advanced_settings" = "Gelişmiş Ayarlar";
+"swap.advanced_settings" = "Swap Settings";
 "swap.proceed_button" = "İleri";
 "swap.approve.title" = "Takas Onayı";
 "swap.approve.description" = "Verilen jetonu sizin adınıza swap yapmak için bir akıllı sözleşmeye izin vermelisiniz. Bu izin, akıllı sözleşme tarafından kullanılabilecek tutarı belirler. Bakiyenizi etkilemez ancak onay işlemini gerçekleştirmek için küçük bir ücret gerekir.\n\nHer alım satımdan önce talep üzerine yapılabilirken, ileriki alım satımlarda bizim için önceden daha yüksek tutarı onaylamanız durumunda çok daha ucuz olur.";
@@ -244,6 +253,9 @@
 "swap.advanced_settings.error.invalid_address" = "Geçersiz adres";
 "swap.advanced_settings.error.invalid_slippage" = "Geçersiz Kayma";
 "swap.advanced_settings.error.invalid_deadline" = "Geçersiz Son Tarih";
+
+"swap.service" = "Service";
+"swap.service.title" = "Service";
 
 // Swap Approving
 
@@ -342,6 +354,10 @@
 "market_discovery.filter_title.computing" = "Computing";
 "market_discovery.filter_title.fan_tokens" = "Fan Tokens";
 "market_discovery.filter_title.investment_tools" = "Investment Tools";
+"market_discovery.filter_title.storage" = "Storage";
+"market_discovery.filter_title.identity" = "Identity";
+"market_discovery.filter_title.yield_tokens" = "Yield Tokens";
+
 
 "market_discovery.filter_description.blockchain" = "Native cryptocurrencies on major blockchains.";
 "market_discovery.filter_description.dexes" = "Decentralized cryptocurrency exchanges.";
@@ -361,7 +377,7 @@
 "market_discovery.filter_description.wallets" = "Tokens issued by cryptocurrency wallets.";
 "market_discovery.filter_description.synthetics" = "Platforms for creating decentralized synthetic assets.";
 "market_discovery.filter_description.index_funds" = "Assets that pegged in price to a set of tokens.";
-"market_discovery.filter_description.nft" = "Marketplaces for NFT tokens.";
+"market_discovery.filter_description.nft" = "NFT projects.";
 "market_discovery.filter_description.fundraising" = "Fundraising and token sale platforms.";
 "market_discovery.filter_description.gaming" = "Crypto projects in gaming and VR sector.";
 "market_discovery.filter_description.b2b" = "B2B service providers.";
@@ -371,6 +387,10 @@
 "market_discovery.filter_description.computing" = "Decentralized on-demand computing solutions.";
 "market_discovery.filter_description.fan_tokens" = "Digital fan tokens, typically specific to a team or club.";
 "market_discovery.filter_description.investment_tools" = "Token-powered analytics and investment instruments.";
+"market_discovery.filter_description.storage" = "Decentralized data-storage.";
+"market_discovery.filter_description.identity" = "Decentralized identity.";
+"market_discovery.filter_description.yield_tokens" = "Interesting Bearing Tokens.";
+
 
 "market_watchlist.empty.caption" = "You don’t have any favorite assets.\n You can add the favorites by clicking on star icon in the asset page";
 
@@ -444,16 +464,24 @@
 "coin_page.circulating_supply" = "In Circulation";
 "coin_page.total_supply" = "Total Supply";
 "coin_page.dilluted_market_cap" = "Diluted MCap";
-"coin_page.genesis_date" = "Launch Date";
+"coin_page.genesis_date" = "Inception Date";
 
 "coin_page.trading_volume" = "Trading Volume";
-"coin_page.markets" = "%@ Markets";
+"coin_page.trading_volume.description" = "The historical change in daily aggregate trading volume for %@";
+"coin_page.markets" = "Markets";
 "coin_page.funds_invested" = "Funds Invested";
+
+"coin_page.coin_markets" = "%@ Markets";
+"coin_page.coin_markets.sort_by" = "Sort By";
+"coin_page.coin_markets.sort_by.highest_volume" = "Highest Volume";
+"coin_page.coin_markets.sort_by.lowest_volume" = "Lowest Volume";
 
 "coin_page.tvl" = "Total Value Locked";
 "coin_page.market_cap_tvl_ratio" = "MCap / TVL Ratio";
 "coin_page.tvl_rank" = "TVL Rank";
 "coin_page.tvl.description" = "Capital deposited into the platform in the form of loan collateral or liquidity pool.";
+
+"coin_page.investor_data" = "Investor Data";
 
 "coin_page.category" = "Category";
 "coin_page.contract" = "%@ Contract";
@@ -463,6 +491,51 @@
 "coin_page.website" = "Website";
 "coin_page.whitepaper" = "Whitepaper";
 
+"coin_page.favorited" = "Added To Watchlist";
+"coin_page.unfavorited" = "Removed from Watchlist";
+
+"coin_page.major_holders" = "Major Holders";
+"coin_page.major_holders.chart.description" = "in top 10 wallets";
+"coin_page.major_holders.top_wallets" = "Top Wallets";
+"coin_page.major_holders.description" = "Chart above shows the % of all tokens in circulation held by top 10 wallets. The lower the % the more distributed the coin is.";
+"coin_page.major_holders.sync_error" = "Sync Error";
+
+"coin_page.tvl_rank.multi_chain" = "Multi-Chain";
+"coin_page.tvl_rank.sync_error" = "Sync Error";
+"coin_page.tvl_rank.filters" = "Filters";
+"coin_page.tvl_rank.filters.all" = "All";
+"coin_page.tvl_rank.sort_by" = "Sort By";
+"coin_page.tvl_rank.sort_by.highest_tvl" = "Highest TVL";
+"coin_page.tvl_rank.sort_by.lowest_tvl" = "Lowest TVL";
+
+"coin_page.security_parameters" = "Security Parameters";
+"coin_page.security_parameters.privacy" = "Privacy";
+"coin_page.security_parameters.issuance" = "Issuance";
+"coin_page.security_parameters.confiscation_resistance" = "Confiscation-resistance";
+"coin_page.security_parameters.censorship_resistance" = "Censorship-resistance";
+
+"coin_page.security_parameters.level.low" = "Low";
+"coin_page.security_parameters.level.medium" = "Medium";
+"coin_page.security_parameters.level.high" = "High";
+"coin_page.security_parameters.issuance.decentralized" = "Decentralized";
+"coin_page.security_parameters.issuance.centralized" = "Centralized";
+"coin_page.security_parameters.resistance.yes" = "Yes";
+"coin_page.security_parameters.resistance.no" = "No";
+
+"coin_page.security_parameters.privacy.description.low" = "Transactions with this token are fully public allowing 3rd party services to link different transactions to the same entity, see amounts transacted and view user balances.";
+"coin_page.security_parameters.privacy.description.medium" = "Transactions with this token are semi-anonymous. A 3rd party service is able to see the amounts transacted and partially link different transactions to the same entity.";
+"coin_page.security_parameters.privacy.description.high" = "Transactions with this token are anonymous by default or provide such capabilities. No entity is able to link different transactions to the same individual or see the amounts transacted.";
+"coin_page.security_parameters.issuance.description.decentralized" = "The amount of tokens in circulation controlled by an algorithm and works in a deterministic manner outside of centralized influence.";
+"coin_page.security_parameters.issuance.description.centralized" = "The amount of tokens in circulation can potentially be increased or decreased by a centralized entity at will.";
+"coin_page.security_parameters.confiscation_resistance.description.yes" = "The tokens can not be confiscated when kept in non-custodial wallet.";
+"coin_page.security_parameters.confiscation_resistance.description.no" = "The tokens can be confiscated or tampered with by an issuing entity.";
+"coin_page.security_parameters.censorship_resistance.description.yes" = "The token holder can not be censored from transacting.";
+"coin_page.security_parameters.censorship_resistance.description.no" = "The token holder can be censored from transacting.";
+
+"coin_page.info" = "Info";
+
+"coin_page.audits" = "Audits";
+
 // Transactions
 
 "transactions.title" = "Hesap işlemleri";
@@ -470,13 +543,34 @@
 "transactions.filter_all" = "Hepsi";
 "transactions.empty_text" = "Henüz herhangi bir bekleyen veya geçmiş işlem yok";
 "transactions.pending" = "Bekleyen";
-"transactions.receiving" = "Alınıyor";
 "transactions.failed" = "Başarısız";
+
+"transactions.receive" = "Receive";
+"transactions.send" = "Send";
+"transactions.approve" = "Approve";
+"transactions.swap" = "Swap";
+
+"transactions.receiving" = "Alınıyor";
 "transactions.sending" = "Gönderiliyor";
+"transactions.approving" = "Approving";
+"transactions.swapping" = "Swapping";
+"transactions.contract_call" = "Contract Call";
+"transactions.contract_creation" = "Contract Creation";
+
+"transactions.received" = "Received";
+"transactions.sent" = "Sent";
+"transactions.approved" = "Approved";
+"transactions.swapped" = "Swapped";
+
+"transactions.to" = "To %@";
+"transactions.from" = "From %@";
+
+"transactions.value.unlimited" = "unlimited";
 
 // Transaction Info
 
-"tx_info.title" = "Hesap işlemi";
+"tx_info.title" = "Transaction Info";
+"tx_info.date" = "Date";
 "tx_info.title_approval" = "Swap Onaylama";
 "tx_info.status.pending" = "Devam ediyor";
 "tx_info.status.completed" = "Tamamlandı";
@@ -494,6 +588,10 @@
 "tx_info.recipient_hash" = "Alıcı";
 "tx_info.raw_transaction" = "Ham işlem";
 "tx_info.memo" = "Memo";
+"tx_info.view_on" = "View on %@";
+"tx_info.you_pay" = "Ödeyeceğiniz Tutar";
+"tx_info.you_get" = "You Get";
+"tx_info.price" = "Price";
 
 // Settings
 
@@ -723,6 +821,7 @@ Mevcut çözümler yeterli olmadığından kendimiz için Durdurulamaz'ı geliş
 "create_wallet.error.empty_passphrase" = "Parola boş olamaz";
 "create_wallet.error.forbidden_symbols" = "Parola için lütfen yalnızca latin harfleri ve rakamları kullanın";
 "create_wallet.error.invalid_confirmation" = "Parola onayı eşleşmiyor";
+"create_wallet.success" = "Created";
 
 // Select Coins
 
@@ -768,11 +867,12 @@ Mevcut çözümler yeterli olmadığından kendimiz için Durdurulamaz'ı geliş
 "add_token.coin_type" = "Coin Type";
 "add_token.coin_name" = "Kripto Para Adı";
 "add_token.coin_code" = "Coin Code";
-"add_token.decimal" = "Decimal";
+"add_token.decimal" = "Ondalık";
 "add_token.already_exists" = "Bu token zaten kripto para yöneticisi listesindedir.";
 "add_token.invalid_contract_address_or_bep2_symbol" = "Invalid contract address or BEP2 symbol";
 "add_token.contract_not_found" = "Contract not found";
 "add_token.symbol_not_found" = "Symbol not found";
+"add_token.success_add" = "Added";
 
 "change_24hour_up" = "%@ fiyat: yukarı %@%% %@";
 "change_24hour_down" = "%@ fiyat: aşağı %@%% %@";
@@ -792,6 +892,7 @@ Mevcut çözümler yeterli olmadığından kendimiz için Durdurulamaz'ı geliş
 "wallet_connect.url" = "URL";
 "wallet_connect.connect_description" = "Onayla butonunu tıklayarak, bu uygulamanın açık adresinizi görüntülemesine izin vermiş olursunuz. Bu, verilerinizi olası kimlik hırsızlığı risklerinden korumak için önemli bir güvenlik adımıdır.";
 "wallet_connect.usage_description" = "Tarayıcıya gidebilirsiniz. Tarayıcıda etkileşim içindeyken bu sayfayı kapatmayın.";
+"wallet_connect.no_connection" = "Wallet connect is not responding";
 "wallet_connect.button_disconnect" = "Bağlantıyı Kes";
 "ethereum_transaction.error.insufficient_balance" = "İşlem, göndermek için %@ gerektirir.";
 "ethereum_transaction.error.insufficient_balance_with_fee" = "Mevcut ETH bakiyesi, işlem ücreti dahil bu işlemi gerçekleştirmek için gereken miktarın altında.";

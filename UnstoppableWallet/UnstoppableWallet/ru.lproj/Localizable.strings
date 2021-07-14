@@ -23,6 +23,7 @@
 "alert.wrong_amount" = "Неверная Сумма";
 "alert.no_fee" = "Неверная Комиссия";
 "alert.unknown_error" = "Неизвестная Ошибка";
+"alert.success_action" = "Done";
 
 "action.loading" = "загрузка...";
 "placeholder.search" = "Поиск";
@@ -138,6 +139,12 @@
 "balance_error.sync_error" = "Ошибка Синхронизации";
 "lost_accounts.warning_title" = "Ошибка связки ключей iOS";
 "lost_accounts.warning_message" = "Зашифрованные данные вашего кошелька были недавно аннулированы, поскольку ваш экран блокировки iOS был изменен";
+
+//Release notes
+
+"release_notes.title" = "What's New";
+"release_notes.follow_us" = "Follow Us";
+
 // Deposit
 
 "deposit.receive_coin" = "Получить %@";
@@ -214,10 +221,11 @@
 "swap.you_pay" = "Платите";
 "swap.estimated" = "приблизительно";
 "swap.balance" = "Баланс";
+"swap.powered_by" = "Powered By";
 "swap.allowance" = "Разрешение";
 "swap.you_get" = "Получите";
 "swap.token" = "Выбрать";
-"swap.advanced_settings" = "Дополнительные Настройки";
+"swap.advanced_settings" = "Swap Settings";
 "swap.proceed_button" = "Далее";
 "swap.approve.title" = "Разрешение Обмена";
 "swap.approve.description" = "Вы должны предоставить разрешение на смарт-контракт, чтобы обменять этот токен от своего имени. С помощью этого разрешения задается сумма, которая может быть использована в рамках смарт-контракта. Это не повлияет на ваш баланс, но вам придется заплатить небольшой сбор за исполнение транзакции.\n\nРазрешение может быть запрошено перед каждой сделкой, но дешевле заранее задать более высокую сумму для будущих сделок.";
@@ -246,6 +254,9 @@
 "swap.advanced_settings.error.invalid_address" = "Неверный Адрес";
 "swap.advanced_settings.error.invalid_slippage" = "Неверное Отклонение";
 "swap.advanced_settings.error.invalid_deadline" = "Недопустимый Срок";
+
+"swap.service" = "Service";
+"swap.service.title" = "Service";
 
 // Swap Approving
 
@@ -344,6 +355,10 @@
 "market_discovery.filter_title.computing" = "Computing";
 "market_discovery.filter_title.fan_tokens" = "Fan Tokens";
 "market_discovery.filter_title.investment_tools" = "Investment Tools";
+"market_discovery.filter_title.storage" = "Storage";
+"market_discovery.filter_title.identity" = "Identity";
+"market_discovery.filter_title.yield_tokens" = "Yield Tokens";
+
 
 "market_discovery.filter_description.blockchain" = "Нативные криптовалюты в основных блокчейнах.";
 "market_discovery.filter_description.dexes" = "Децентрализованные криптовалютные биржи.";
@@ -363,7 +378,7 @@
 "market_discovery.filter_description.wallets" = "Токены криптовалютных кошельков.";
 "market_discovery.filter_description.synthetics" = "Платформы для создания децентрализованных синтетических активов.";
 "market_discovery.filter_description.index_funds" = "Активы, привязанные по цене к ряду токенов.";
-"market_discovery.filter_description.nft" = "Рынки для токенов NFT.";
+"market_discovery.filter_description.nft" = "NFT projects.";
 "market_discovery.filter_description.fundraising" = "Платформы для фандрайзинга и продажи токенов.";
 "market_discovery.filter_description.gaming" = "Криптопроекты в игровом и VR секторах.";
 "market_discovery.filter_description.b2b" = "Поставщики услуг B2B.";
@@ -373,6 +388,10 @@
 "market_discovery.filter_description.computing" = "Децентрализованные компьютерные решения по требованию.";
 "market_discovery.filter_description.fan_tokens" = "Цифровые фан-токены, обычно используемые командой или клубом.";
 "market_discovery.filter_description.investment_tools" = "Аналитика токенов и инвестиционных инструментов.";
+"market_discovery.filter_description.storage" = "Decentralized data-storage.";
+"market_discovery.filter_description.identity" = "Decentralized identity.";
+"market_discovery.filter_description.yield_tokens" = "Interesting Bearing Tokens.";
+
 
 "market_watchlist.empty.caption" = "У вас нет отслеживаемых токенов. \nВы можете добавить сюда токены с помощью значка со звездочкойна странице токенов.";
 
@@ -446,16 +465,24 @@
 "coin_page.circulating_supply" = "В обороте";
 "coin_page.total_supply" = "Макс.Выпуск";
 "coin_page.dilluted_market_cap" = "Разводненная рын.кап.";
-"coin_page.genesis_date" = "Дата Запуска";
+"coin_page.genesis_date" = "Inception Date";
 
 "coin_page.trading_volume" = "Объем Торговли";
-"coin_page.markets" = "%@ Рынки";
+"coin_page.trading_volume.description" = "The historical change in daily aggregate trading volume for %@";
+"coin_page.markets" = "Markets";
 "coin_page.funds_invested" = "Средства Инвестированы";
+
+"coin_page.coin_markets" = "%@ Markets";
+"coin_page.coin_markets.sort_by" = "Sort By";
+"coin_page.coin_markets.sort_by.highest_volume" = "Highest Volume";
+"coin_page.coin_markets.sort_by.lowest_volume" = "Lowest Volume";
 
 "coin_page.tvl" = "Общая сумма заблокирована";
 "coin_page.market_cap_tvl_ratio" = "Рын.кап / Соотношение TVL ";
 "coin_page.tvl_rank" = "Рейтинг TVL";
 "coin_page.tvl.description" = "Капитал, задепонированный на платформе в виде кредитного обеспечения или пула ликвидности.";
+
+"coin_page.investor_data" = "Investor Data";
 
 "coin_page.category" = "Категория";
 "coin_page.contract" = "%@ Контракт";
@@ -465,6 +492,51 @@
 "coin_page.website" = "Веб-сайт";
 "coin_page.whitepaper" = "Белая бумага";
 
+"coin_page.favorited" = "Added To Watchlist";
+"coin_page.unfavorited" = "Removed from Watchlist";
+
+"coin_page.major_holders" = "Major Holders";
+"coin_page.major_holders.chart.description" = "in top 10 wallets";
+"coin_page.major_holders.top_wallets" = "Top Wallets";
+"coin_page.major_holders.description" = "Chart above shows the % of all tokens in circulation held by top 10 wallets. The lower the % the more distributed the coin is.";
+"coin_page.major_holders.sync_error" = "Sync Error";
+
+"coin_page.tvl_rank.multi_chain" = "Multi-Chain";
+"coin_page.tvl_rank.sync_error" = "Sync Error";
+"coin_page.tvl_rank.filters" = "Filters";
+"coin_page.tvl_rank.filters.all" = "All";
+"coin_page.tvl_rank.sort_by" = "Sort By";
+"coin_page.tvl_rank.sort_by.highest_tvl" = "Highest TVL";
+"coin_page.tvl_rank.sort_by.lowest_tvl" = "Lowest TVL";
+
+"coin_page.security_parameters" = "Security Parameters";
+"coin_page.security_parameters.privacy" = "Privacy";
+"coin_page.security_parameters.issuance" = "Issuance";
+"coin_page.security_parameters.confiscation_resistance" = "Confiscation-resistance";
+"coin_page.security_parameters.censorship_resistance" = "Censorship-resistance";
+
+"coin_page.security_parameters.level.low" = "Low";
+"coin_page.security_parameters.level.medium" = "Medium";
+"coin_page.security_parameters.level.high" = "High";
+"coin_page.security_parameters.issuance.decentralized" = "Decentralized";
+"coin_page.security_parameters.issuance.centralized" = "Centralized";
+"coin_page.security_parameters.resistance.yes" = "Yes";
+"coin_page.security_parameters.resistance.no" = "No";
+
+"coin_page.security_parameters.privacy.description.low" = "Transactions with this token are fully public allowing 3rd party services to link different transactions to the same entity, see amounts transacted and view user balances.";
+"coin_page.security_parameters.privacy.description.medium" = "Transactions with this token are semi-anonymous. A 3rd party service is able to see the amounts transacted and partially link different transactions to the same entity.";
+"coin_page.security_parameters.privacy.description.high" = "Transactions with this token are anonymous by default or provide such capabilities. No entity is able to link different transactions to the same individual or see the amounts transacted.";
+"coin_page.security_parameters.issuance.description.decentralized" = "The amount of tokens in circulation controlled by an algorithm and works in a deterministic manner outside of centralized influence.";
+"coin_page.security_parameters.issuance.description.centralized" = "The amount of tokens in circulation can potentially be increased or decreased by a centralized entity at will.";
+"coin_page.security_parameters.confiscation_resistance.description.yes" = "The tokens can not be confiscated when kept in non-custodial wallet.";
+"coin_page.security_parameters.confiscation_resistance.description.no" = "The tokens can be confiscated or tampered with by an issuing entity.";
+"coin_page.security_parameters.censorship_resistance.description.yes" = "The token holder can not be censored from transacting.";
+"coin_page.security_parameters.censorship_resistance.description.no" = "The token holder can be censored from transacting.";
+
+"coin_page.info" = "Info";
+
+"coin_page.audits" = "Audits";
+
 // Transactions
 
 "transactions.title" = "Транзакции";
@@ -472,13 +544,34 @@
 "transactions.filter_all" = "Все";
 "transactions.empty_text" = "У вас ещё нет незавершенных или прошлых транзакций";
 "transactions.pending" = "В обработке";
-"transactions.receiving" = "Получение";
 "transactions.failed" = "Не удалось";
+
+"transactions.receive" = "Receive";
+"transactions.send" = "Send";
+"transactions.approve" = "Approve";
+"transactions.swap" = "Swap";
+
+"transactions.receiving" = "Получение";
 "transactions.sending" = "Отправка";
+"transactions.approving" = "Approving";
+"transactions.swapping" = "Swapping";
+"transactions.contract_call" = "Contract Call";
+"transactions.contract_creation" = "Contract Creation";
+
+"transactions.received" = "Received";
+"transactions.sent" = "Sent";
+"transactions.approved" = "Approved";
+"transactions.swapped" = "Swapped";
+
+"transactions.to" = "To %@";
+"transactions.from" = "From %@";
+
+"transactions.value.unlimited" = "unlimited";
 
 // Transaction Info
 
-"tx_info.title" = "Транзакция";
+"tx_info.title" = "Transaction Info";
+"tx_info.date" = "Date";
 "tx_info.title_approval" = "Подтверждение Обмена";
 "tx_info.status.pending" = "В обработке";
 "tx_info.status.completed" = "Завершено";
@@ -496,6 +589,10 @@
 "tx_info.recipient_hash" = "Получатель";
 "tx_info.raw_transaction" = "Неподтвержденная Транзакция";
 "tx_info.memo" = "Memo";
+"tx_info.view_on" = "View on %@";
+"tx_info.you_pay" = "You Pay";
+"tx_info.you_get" = "You Get";
+"tx_info.price" = "Price";
 
 // Settings
 
@@ -725,6 +822,7 @@
 "create_wallet.error.empty_passphrase" = "Поле для кодовой фразы не может быть пустым";
 "create_wallet.error.forbidden_symbols" = "Пожалуйста, используйте только латинские буквы и цифры для кодовой фразы";
 "create_wallet.error.invalid_confirmation" = "Подтвержденная кодовая фраза не совпадает";
+"create_wallet.success" = "Created";
 
 // Select Coins
 
@@ -775,6 +873,7 @@
 "add_token.invalid_contract_address_or_bep2_symbol" = "Invalid contract address or BEP2 symbol";
 "add_token.contract_not_found" = "Контракт не найден";
 "add_token.symbol_not_found" = "Symbol not found";
+"add_token.success_add" = "Added";
 
 "change_24hour_up" = "%@ цена: повысилась на %@%%%@";
 "change_24hour_down" = "%@ цена: понизилась на %@%%%@";
@@ -794,6 +893,7 @@
 "wallet_connect.url" = "URL";
 "wallet_connect.connect_description" = "Нажимая \"Подтвердить\", вы разрешаете этому приложению просматривать ваш общедоступный адрес. Это важный шаг для защиты ваших данных от потенциальных рисков фишинга.";
 "wallet_connect.usage_description" = "Вы можете перейти в браузер. Не закрывайте эту страницу во время использования браузера.";
+"wallet_connect.no_connection" = "Wallet connect is not responding";
 "wallet_connect.button_disconnect" = "Отсоединить";
 "ethereum_transaction.error.insufficient_balance" = "Для отправки транзакции требуется %@.";
 "ethereum_transaction.error.insufficient_balance_with_fee" = "Текущий баланс ETH ниже суммы, необходимой для обработки этой транзакции, включая комиссию за транзакцию.";
